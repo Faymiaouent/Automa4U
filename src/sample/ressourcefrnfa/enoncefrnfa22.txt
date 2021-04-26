@@ -1,0 +1,1 @@
+Construire un automate qui reconnait les mots qui contiennent le facteur a. Sur l'alphabet {a}.

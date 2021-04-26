@@ -1,0 +1,1 @@
+Construire un automate qui reconnait les mots n'ayant que des a. Sur l'alphabet {a}.

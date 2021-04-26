@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<gxl>
+	<graph id="Automaton" edgeids="true" edgemode="directed">
+		<attr name="rankdir" kind="graph">
+			<string>LR</string>
+		</attr>
+		<node id="N_0">
+			<attr name="name">
+				<string>0</string>
+			</attr>
+			<attr name="shape">
+				<string>doublecircle</string>
+			</attr>
+		</node>
+		<edge from="N_0" to="N_0" isdirected="true" id="N_0--N_0">
+			<attr name="label">
+				<string>a</string>
+			</attr>
+		</edge>
+		<node id="initial">
+			<attr name="shape">
+				<string>plaintext</string>
+			</attr>
+		</node>
+		<edge from="initial" to="N_0" isdirected="true" id="initial--N_0">
+		</edge>
+	</graph>
+</gxl>
