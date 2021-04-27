@@ -19,7 +19,7 @@
 		</edge>
 		<node id="N_1">
 			<attr name="name">
-				<string>1</string>
+				<string>2</string>
 			</attr>
 			<attr name="shape">
 				<string>doublecircle</string>
@@ -34,7 +34,7 @@
 		</edge>
 		<node id="N_2">
 			<attr name="name">
-				<string>2</string>
+				<string>1</string>
 			</attr>
 		</node>
 		<edge from="N_2" to="N_0" isdirected="true" id="N_2--N_0">

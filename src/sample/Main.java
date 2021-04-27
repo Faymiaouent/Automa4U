@@ -25,7 +25,6 @@ import generation.MoFormula;
 import generation.ParsingDOT;
 
 import java.io.*;
-import java.util.Collection;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -36,7 +35,7 @@ public class Main extends Application implements EventHandler<ActionEvent> {
     /**
      * Premiere scène (accueil)
      */
-    int compteurdfaregex = 0;
+    int numprobleme;
     int nbProbleme = 30;
     int variable;
     int variablenfa;
@@ -46,7 +45,7 @@ public class Main extends Application implements EventHandler<ActionEvent> {
     int variablefr2dfa;
     int variablefr2nfa;
     Random rn = new Random();
-    int borne;
+    int borne=0;
     int level;
     Button oui = new Button("+");
     Button non = new Button("-");
@@ -222,6 +221,19 @@ public class Main extends Application implements EventHandler<ActionEvent> {
     BorderPane layoutfr2nfa = new BorderPane();
     Scene fr2nfa = new Scene(layoutfr2nfa,1200,800);
 
+    /**
+     * Douzième scène (Résultat de l'étudiant)
+     */
+    ToolBar toolresultat = new ToolBar();
+    Button accepter = new Button("Continuer");
+    TextField resultat = new TextField();
+    HBox hboxresultat = new HBox();
+    Label texteresultat = new Label();
+    GridPane gridresultat = new GridPane();
+    BorderPane layoutresultat = new BorderPane();
+    Scene sceneresultat = new Scene(layoutresultat,1000,600);
+
+
 
 
     @Override
@@ -229,7 +241,6 @@ public class Main extends Application implements EventHandler<ActionEvent> {
         window = primaryStage;
         window.setTitle("Automa4U");
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        //Background background = new Background(new BackgroundImage(new Image(getClass().getResource("/sample/ui_background.png").toString()),null,null,null,null));
 
         /**
          * Première scène (accueil)
@@ -251,22 +262,19 @@ public class Main extends Application implements EventHandler<ActionEvent> {
         hbox.getChildren().addAll(oui, non, valeur, choix, choisir, lselection);
 
         toolBar.getItems().addAll(hbox,hbox1);
-        //toolBar.setBackground(background);
 
 
         layout.setTop(toolBar);
         layout.setCenter(image);
-        // layout.setBottom(lselection);
+
 
         /**
          * Deuxième scène (choix déterministe et non déterministe)
          */
         todfa.setPrefSize(200,100);
         tonfa.setPrefSize(200,100);
-        //hbox3.getChildren().addAll(todfa,tonfa);
         question.setText("==> Choisissez le type d'automate :");
         question.setFont(new Font(50));
-        //question.setAlignment(Pos.TOP_CENTER);
         tooltitre.getItems().addAll(question);
         grid.setAlignment(Pos.CENTER);
         grid.setHgap(20);
@@ -277,8 +285,6 @@ public class Main extends Application implements EventHandler<ActionEvent> {
         layout1.setCenter(grid);
         todfa.setOnAction(this);
         tonfa.setOnAction(this);
-        //layout1.getChildren().add(hbox3);
-        //layout1.setAlignment(hbox3, Pos.BOTTOM_CENTER);
 
 
         /**
@@ -292,14 +298,13 @@ public class Main extends Application implements EventHandler<ActionEvent> {
         gridImage.setAlignment(Pos.CENTER);
         gridImage.add(dfa,0,0);
         gridImage.setBackground(background);
-        //hboximage.getChildren().addAll(dfa);
         layoutdfa2regex.setCenter(gridImage);
         toexitdfa.setPrefSize(200,100);
         submitregex.setPrefSize(200,100);
         toAfficherregex.setPrefSize(200,100);
         newDfa.setPrefSize(200,100);
-        textedfa.setMaxSize(200,30);
-        hboxdfa2regex.getChildren().addAll(textedfa, toexitdfa, submitregex, toAfficherregex, newDfa);
+        textedfa.setMaxSize(300,30);
+        hboxdfa2regex.getChildren().addAll(toexitdfa, submitregex, toAfficherregex, newDfa);
         hboxdfa2regex.setBackground(background);
         layoutdfa2regex.setBottom(hboxdfa2regex);
         newDfa.setOnAction(this);
@@ -341,7 +346,6 @@ public class Main extends Application implements EventHandler<ActionEvent> {
         hboxchoix.getChildren().addAll(toDFAfrgx,toNFArgx);
         qst.setText("==> Choisissez le type d'automate :");
         qst.setFont(new Font(50));
-        //question.setAlignment(Pos.TOP_CENTER);
         toolTitreChoix.getItems().addAll(question);
         gridChoix.setAlignment(Pos.CENTER);
         gridChoix.setHgap(20);
@@ -458,7 +462,6 @@ public class Main extends Application implements EventHandler<ActionEvent> {
         frdfasolution.setPreserveRatio(true);
         frdfasolution.setSmooth(true);
         frdfasolution.setCache(true);
-
         gridcentrefr2dfa.add(frdfasolution,0,0);
         gridcentrefr2dfa.setBackground(background);
         layoutfr2dfa.setCenter(gridcentrefr2dfa);
@@ -490,13 +493,28 @@ public class Main extends Application implements EventHandler<ActionEvent> {
         reponsefr2nfa.setOnAction(this);
         newenoncefr2nfa.setOnAction(this);
 
+        /**
+         * Douzième scène (Résultat de l'étudiant)
+         */
+        texteresultat.setText("Ecrire ici votre score");
+        texteresultat.setFont(new Font(50));
+        accepter.setPrefSize(1000,100);
+        hboxresultat.getChildren().addAll(accepter);
+        resultat.setPrefSize(200,20);
+        layoutresultat.setBottom(hboxresultat);
+        layoutresultat.setTop(toolresultat);
+        gridresultat.setBackground(background);
+        gridresultat.add(resultat,0,0);
+        gridresultat.setAlignment(Pos.CENTER);
+        layoutresultat.setCenter(gridresultat);
+        accepter.setOnAction(this);
+
 
 
         window.setScene(accueil);
         window.setTitle("AUTOMA4U : Accueil");
         window.getIcons().add(new Image("/sample/logo.PNG"));
         window.show();
-
     }
 
     @Override
@@ -526,206 +544,207 @@ public class Main extends Application implements EventHandler<ActionEvent> {
                     window.setScene(sceneChoix);
                     window.setTitle("AUTOMA4U : Choisir le type d'automate");
                     break;
+                case(3):
+                    window.setScene(sceneselectionfrdfa);
+                    window.setTitle("AUTOMA4U : Choisir le type d'automate");
+                    break;
                 case(4):
+                    numprobleme=7;
                     window.setScene(fr2regex);
                     window.setTitle("AUTOMA4U : Français vers expression régulière");
                     try {
-                        for (int i = 0; i < nbProbleme+1 ; i++) {
+                        for (int i = 0; i < 21 ; i++) {
                             createfr2regex(String.valueOf(i));
                         }
-                        /*createfr2regex("1");
-                        createfr2regex("2");
-                        createfr2regex("3");
-                        createfr2regex("4");
-                        createfr2regex("5");
-                        createfr2regex("6");
-                        createfr2regex("7");
-                        createfr2regex("8");
-                        createfr2regex("9");
-                        createfr2regex("10");
-                         */
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
-                case(3):
-                    window.setScene(sceneselectionfrdfa);
-                    window.setTitle("AUTOMA4U : Choisir le type d'automate");
             }
         }
         if(actionevent.getSource()==todfa){
             try {
-                for (int i = 0; i < nbProbleme+1 ; i++) {
+                for (int i = 0; i < 21 ; i++) {
                     createDfa(String.valueOf(i));
                 }
-                /*createDfa("1");
-                createDfa("2");
-                createDfa("3");
-                createDfa("4");
-                createDfa("5");
-                createDfa("6");
-                createDfa("7");
-                createDfa("8");
-                createDfa("9");
-                createDfa("10");
-
-                 */
-
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            numprobleme=1;
             window.setScene(dfa2regex);
             window.setTitle("AUTOMA4U : Automate déterministe vers expression régulière");
         }
         if(actionevent.getSource()==toDFAfrgx){
             try {
-                for (int i = 0; i < nbProbleme+1 ; i++) {
+                for (int i = 0; i < 21 ; i++) {
                     createDfa(String.valueOf(i));
                 }
-                /*createDfa("1");
-                createDfa("2");
-                createDfa("3");
-                createDfa("4");
-                createDfa("5");
-                createDfa("6");
-                createDfa("7");
-                createDfa("8");
-                createDfa("9");
-                createDfa("10");
-
-                 */
 
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            numprobleme=3;
             window.setScene(regex2dfa);
             window.setTitle("AUTOMA4U : Expression régulière vers automate déterministe");
         }
         if(actionevent.getSource()==tofrdfa){
             try{
-                for (int i = 0; i < nbProbleme+1 ; i++) {
+                for (int i = 0; i < 21 ; i++) {
                     createfr2dfa(String.valueOf(i));
                 }
-                /*createfr2dfa("1");
-                createfr2dfa("2");
-                createfr2dfa("3");
-                createfr2dfa("4");
-                createfr2dfa("5");
-                createfr2dfa("6");
-                createfr2dfa("7");
-                createfr2dfa("8");
-                createfr2dfa("9");
-                createfr2dfa("10");
 
-                 */
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            numprobleme=5;
             window.setScene(fr2dfa);
             window.setTitle("AUTOMA4U : Français vers automate déterministe");
         }
         if(actionevent.getSource()==tofrnfa){
             try{
-                for (int i = 0; i < nbProbleme+1 ; i++) {
+                for (int i = 0; i < 21 ; i++) {
                     createfr2nfa(String.valueOf(i));
                 }
-                /*createfr2nfa("1");
-                createfr2nfa("2");
-                createfr2nfa("3");
-                createfr2nfa("4");
-                createfr2nfa("5");
-                createfr2nfa("6");
-                createfr2nfa("7");
-                createfr2nfa("8");
-                createfr2nfa("9");
-                createfr2nfa("10");
 
-                 */
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            numprobleme=6;
             window.setScene(fr2nfa);
             window.setTitle("AUTOMA4U : Français vers automate non déterministe");
         }
 
         if (actionevent.getSource()==tonfa){
             try {
-                for (int i = 0; i < nbProbleme+1 ; i++) {
+                for (int i = 0; i < 21 ; i++) {
                     createNfa(String.valueOf(i));
                 }
-                /*createNfa("1");
-                createNfa("2");
-                createNfa("3");
-                createNfa("4");
-                createNfa("5");
-                createNfa("6");
-                createNfa("7");
-                createNfa("8");
-                createNfa("9");
-                createNfa("10");
-                 */
-
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
+            numprobleme=2;
             window.setScene(nfa2regex);
             window.setTitle("AUTOMA4U : Automate non déterministe vers expression régulière");
         }
+
         if(actionevent.getSource()==toNFArgx){
             try {
-                for (int i = 0; i < nbProbleme+1 ; i++) {
+                for (int i = 0; i < 21 ; i++) {
                     createNfa(String.valueOf(i));
                 }
-                /*createNfa("1");
-                createNfa("2");
-                createNfa("3");
-                createNfa("4");
-                createNfa("5");
-                createNfa("6");
-                createNfa("7");
-                createNfa("8");
-                createNfa("9");
-                createNfa("10");
-                 */
-
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            numprobleme=4;
             window.setScene(regex2nfa);
             window.setTitle("AUTOMA4U : Expression régulière vers automate non déterministe");
-
         }
 
-        if(actionevent.getSource() == toexitNfa){
-            window.setScene(accueil);
-            window.setTitle("AUTOMA4U : Accueil");
+
+        if(actionevent.getSource() == accepter){
+            String chaine = resultat.getText();
+            int score = Integer.parseInt(chaine);
+            switch(numprobleme){
+                case(1):
+                case(3):
+                    if(score<10 && compteur > 1){
+                        compteur-=1;
+                        difficultyDFArgx();
+                    }
+                    else if(score>15 && compteur <10){
+                        compteur+=1;
+                        difficultyDFArgx();
+                    }
+                    else if((score>=10 && score <15)||compteur==1||compteur==10){
+                        difficultyDFArgx();
+                    }
+                    break;
+                case(2):
+                case(4):
+                    if(score<10 && compteur > 1){
+                        compteur-=1;
+                        difficultyNFArgx();
+                    }
+                    else if(score>15 && compteur <10){
+                        compteur+=1;
+                        difficultyNFArgx();
+                    }
+                    else if((score>=10 && score <15)||compteur==1||compteur==10){
+                        difficultyNFArgx();
+                    }
+                    break;
+                case(5):
+                    if(score<10 && compteur > 1){
+                        compteur-=1;
+                        difficultyFRdfa();
+                    }
+                    else if(score>15 && compteur <10){
+                        compteur+=1;
+                        difficultyFRdfa();
+                    }
+                    else if((score>=10 && score <15)||compteur==1||compteur==10){
+                        difficultyFRdfa();
+                    }
+                    break;
+                case(6):
+                    if(score<10 && compteur > 1){
+                        compteur-=1;
+                        difficultyFRnfa();
+                    }
+                    else if(score>15 && compteur <10){
+                        compteur+=1;
+                        difficultyFRnfa();
+                    }
+                    else if((score>=10 && score <15)||compteur==1||compteur==10){
+                        difficultyFRnfa();
+                    }
+                    break;
+                case(7):
+                    if(score<10 && compteur > 1){
+                        compteur-=1;
+                        difficultyFRrgx();
+                    }
+                    else if(score>15 && compteur <10){
+                        compteur+=1;
+                        difficultyFRrgx();
+                    }
+                    else if((score>=10 && score <15)||compteur==1||compteur==10){
+                        difficultyFRrgx();
+                    }
+                    break;
+
+
+            }
         }
 
         /**
          * Problème (** DFA -> REGEX **)
          */
         if(actionevent.getSource()==newDfa){
-            gridImage.getChildren().remove(dfa);
-            gridImage.getChildren().remove(reponseregexdfa);
-            borne = rn.nextInt(nbProbleme)+1;
-            System.out.println(borne);
-            File img = new File("src/sample/ressources/dfa"+borne+".png");
-            //File img = new File("src/sample/ressources/DFA.png");
-            variable = borne;
-            InputStream isImage = null;
-            try {
-                isImage = (InputStream) new FileInputStream(img);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
+            if(borne<5) {
+                    gridImage.getChildren().remove(dfa);
+                    gridImage.getChildren().remove(reponseregexdfa);
+                    System.out.println(borne);
+                    File img = new File("src/sample/ressources/dfa" + borne + ".png");
+                    variable = borne;
+                    borne++;
+                    InputStream isImage = null;
+                    try {
+                        isImage = (InputStream) new FileInputStream(img);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    dfa.setImage(new Image(isImage));
+                    gridImage.add(dfa, 0, 0);
             }
-            dfa.setImage(new Image(isImage));
-            gridImage.add(dfa,0,0);
+            else{
+                window.setScene(sceneresultat);
+                window.setTitle("AUTOMA4U : Resultat");
+            }
         }
+
         if(actionevent.getSource()==toAfficherregex){
             File file = new File("src/sample/ressources/regexdfa"+variable+".txt");
             try {
@@ -740,26 +759,38 @@ public class Main extends Application implements EventHandler<ActionEvent> {
                 e.printStackTrace();
             }
         }
-        /**
-         * Problème NFA -> REGEX
-         */
-        if(actionevent.getSource()==newNfa){
-            gridImageNFA.getChildren().remove(nfa);
-            gridImageNFA.getChildren().remove(reponseregexnfa);
-            borne = rn.nextInt(nbProbleme)+1;
-            File img = new File("src/sample/ressources/nfa"+borne+".png");
-            variablenfa = borne;
-            //System.out.println(variablenfa);
-            InputStream isImage = null;
-            try {
-                isImage = (InputStream) new FileInputStream(img);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            nfa.setImage(new Image(isImage));
-            gridImageNFA.add(nfa,0,0);
-            //hboximage.getChildren().addAll(dfa);
+        if(actionevent.getSource()==toexitdfa){
+            borne=0;
+            window.setScene(accueil);
+            window.setTitle("AUTOMA4U : Accueil");
         }
+
+        /**
+         * PROBLEME (** NFA -> REGEX **)
+         */
+
+        if(actionevent.getSource()==newNfa){
+            if(borne<5) {
+                gridImageNFA.getChildren().remove(nfa);
+                gridImageNFA.getChildren().remove(reponseregexnfa);
+                borne++;
+                File img = new File("src/sample/ressources/nfa" + borne + ".png");
+                variablenfa = borne;
+                InputStream isImage = null;
+                try {
+                    isImage = (InputStream) new FileInputStream(img);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                nfa.setImage(new Image(isImage));
+                gridImageNFA.add(nfa, 0, 0);
+            }
+            else{
+                window.setScene(sceneresultat);
+                window.setTitle("AUTOMA4U : Resultat");
+            }
+        }
+
         if(actionevent.getSource()==toanswerRgxnfa){
             File file = new File("src/sample/ressources/regexnfa"+variablenfa+".txt");
             try{
@@ -774,24 +805,34 @@ public class Main extends Application implements EventHandler<ActionEvent> {
                 e.printStackTrace();
             }
         }
+        if(actionevent.getSource() == toexitNfa){
+            window.setScene(accueil);
+            window.setTitle("AUTOMA4U : Accueil");
+        }
 
         /**
-         * Problème Regex -> DFA
+         * PROBLEME (** REGEX -> DFA **)
          */
         if(actionevent.getSource()==newrgxdfa){
-            gridImagergxdfa.getChildren().remove(regexdfa);
-            gridImagergxdfa.getChildren().remove(dfasolution);
-            borne = rn.nextInt(nbProbleme)+1;
-            variablergxdfa = borne;
-            File file = new File("src/sample/ressources/regexdfa"+borne+".txt");
-            try {
-                Scanner scanner = new Scanner(file);
-                String regex = scanner.nextLine();
-                regexdfa.setText(regex);
-                regexdfa.setFont(new Font(40));
-                gridImagergxdfa.add(regexdfa,0,0);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
+            if(borne<5) {
+                gridImagergxdfa.getChildren().remove(regexdfa);
+                gridImagergxdfa.getChildren().remove(dfasolution);
+                borne++;
+                variablergxdfa = borne;
+                File file = new File("src/sample/ressources/regexdfa" + borne + ".txt");
+                try {
+                    Scanner scanner = new Scanner(file);
+                    String regex = scanner.nextLine();
+                    regexdfa.setText(regex);
+                    regexdfa.setFont(new Font(40));
+                    gridImagergxdfa.add(regexdfa, 0, 0);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+            else{
+                window.setScene(sceneresultat);
+                window.setTitle("AUTOMA4U : Resultat");
             }
         }
         if(actionevent.getSource()==toanswerdfa){
@@ -807,23 +848,36 @@ public class Main extends Application implements EventHandler<ActionEvent> {
             dfasolution.setImage(new Image(isImage));
             gridImagergxdfa.add(dfasolution,0,0);
         }
+        if(actionevent.getSource()==toexitrgxdfa){
+            borne=0;
+            window.setScene(accueil);
+            window.setTitle("AUTOMA4U : Accueil");
+        }
+
+
         /**
-         * Problème REGEX -> NFA
+         * PROBLEME (** REGEX -> NFA **)
          */
         if(actionevent.getSource()==newrgxnfa){
-            gridImageRGXnfa.getChildren().remove(regexnfa);
-            gridImageRGXnfa.getChildren().remove(nfasolution);
-            borne = rn.nextInt(nbProbleme)+1;
-            variablergxnfa = borne;
-            File file = new File("src/sample/ressources/regexnfa"+borne+".txt");
-            try {
-                Scanner scanner = new Scanner(file);
-                String regex = scanner.nextLine();
-                regexnfa.setText(regex);
-                regexnfa.setFont(new Font(40));
-                gridImageRGXnfa.add(regexnfa,0,0);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
+            if(borne<5) {
+                gridImageRGXnfa.getChildren().remove(regexnfa);
+                gridImageRGXnfa.getChildren().remove(nfasolution);
+                borne++;
+                variablergxnfa = borne;
+                File file = new File("src/sample/ressources/regexnfa" + borne + ".txt");
+                try {
+                    Scanner scanner = new Scanner(file);
+                    String regex = scanner.nextLine();
+                    regexnfa.setText(regex);
+                    regexnfa.setFont(new Font(40));
+                    gridImageRGXnfa.add(regexnfa, 0, 0);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+            else{
+                window.setScene(sceneresultat);
+                window.setTitle("AUTOMA4U : Resultat");
             }
         }
         if(actionevent.getSource()==toanswernfa){
@@ -839,24 +893,37 @@ public class Main extends Application implements EventHandler<ActionEvent> {
             nfasolution.setImage(new Image(isImage));
             gridImageRGXnfa.add(nfasolution,0,0);
         }
+        if(actionevent.getSource()==toexitrgxnfa){
+            borne=0;
+            window.setScene(accueil);
+            window.setTitle("AUTOMA4U : Accueil");
+        }
+
+
         /**
-         * Problème FR -> REGEX
+         * Problème (** FR -> REGEX **)
          */
         if(actionevent.getSource()==newEnonce){
-            gridcentrefr2regex.getChildren().clear();
-            borne = rn.nextInt(nbProbleme)+1;
-            File file = new File("src/sample/ressourcefr2/enoncefrregex"+borne+".txt");
-            variablefr2regex = borne;
-            try {
-                Scanner scanner = new Scanner(file);
-                String fr = scanner.nextLine();
-                enonceFrancais.setText(fr);
-                enonceFrancais.setFont(new Font(30));
-                enonceFrancais.setWrapText(true);
-                gridcentrefr2regex.add(enonceFrancais,0,0);
+            if(borne<5) {
+                gridcentrefr2regex.getChildren().clear();
+                borne++;
+                File file = new File("src/sample/ressourcefr2/enoncefrregex" + borne + ".txt");
+                variablefr2regex = borne;
+                try {
+                    Scanner scanner = new Scanner(file);
+                    String fr = scanner.nextLine();
+                    enonceFrancais.setText(fr);
+                    enonceFrancais.setFont(new Font(30));
+                    enonceFrancais.setWrapText(true);
+                    gridcentrefr2regex.add(enonceFrancais, 0, 0);
 
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+            else{
+                window.setScene(sceneresultat);
+                window.setTitle("AUTOMA4U : Resultat");
             }
         }
         if(actionevent.getSource()==reponsefr2regex){
@@ -872,24 +939,37 @@ public class Main extends Application implements EventHandler<ActionEvent> {
                 e.printStackTrace();
             }
         }
+        if(actionevent.getSource()==toexitfrregex){
+            borne=0;
+            window.setScene(accueil);
+            window.setTitle("AUTOMA4U : Accueil");
+        }
+
+
         /**
-         * PROBLEME FR -> DFA
+         * PROBLEME (** FR -> DFA **)
          */
 
         if(actionevent.getSource()==newenoncefr2dfa){
-            gridcentrefr2dfa.getChildren().clear();
-            borne=rn.nextInt(nbProbleme)+1;
-            File texte = new File("src/sample/ressourcefrdfa/enoncefrdfa"+borne+".txt");
-            variablefr2dfa = borne;
-            try{
-                Scanner scanner = new Scanner(texte);
-                String enonce = scanner.nextLine();
-                enoncefrancaisdfa.setText(enonce);
-                enoncefrancaisdfa.setFont(new Font(50));
-                enoncefrancaisdfa.setWrapText(true);
-                gridcentrefr2dfa.add(enoncefrancaisdfa,0,0);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
+            if(borne<5) {
+                gridcentrefr2dfa.getChildren().clear();
+                borne++;
+                File texte = new File("src/sample/ressourcefrdfa/enoncefrdfa" + borne + ".txt");
+                variablefr2dfa = borne;
+                try {
+                    Scanner scanner = new Scanner(texte);
+                    String enonce = scanner.nextLine();
+                    enoncefrancaisdfa.setText(enonce);
+                    enoncefrancaisdfa.setFont(new Font(50));
+                    enoncefrancaisdfa.setWrapText(true);
+                    gridcentrefr2dfa.add(enoncefrancaisdfa, 0, 0);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+            else{
+                window.setScene(sceneresultat);
+                window.setTitle("AUTOMA4U : Resultat");
             }
         }
 
@@ -906,28 +986,36 @@ public class Main extends Application implements EventHandler<ActionEvent> {
             gridcentrefr2dfa.add(frdfasolution,0,0);
         }
         if(actionevent.getSource()==toexitfrdfa){
+            borne=0;
             window.setScene(accueil);
             window.setTitle("AUTOMA4U : Accueil");
         }
+
         /**
-         * PROBLEME FR -> NFA
+         * PROBLEME (** FR -> NFA **)
          */
         if(actionevent.getSource()==newenoncefr2nfa){
-            gridcentrefr2nfa.getChildren().clear();
-            borne=rn.nextInt(nbProbleme)+1;
-            File file = new File("src/sample/ressourcefrnfa");
-            if(!(file.exists())) file.mkdir();
-            File texte = new File("src/sample/ressourcefrnfa/enoncefrnfa"+borne+".txt");
-            variablefr2nfa = borne;
-            try {
-                Scanner scanner = new Scanner(texte);
-                String enonce = scanner.nextLine();
-                enoncefrancaisnfa.setText(enonce);
-                enoncefrancaisnfa.setFont(new Font(40));
-                enoncefrancaisnfa.setWrapText(true);
-                gridcentrefr2nfa.add(enoncefrancaisnfa,0,0);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
+            if(borne<5) {
+                gridcentrefr2nfa.getChildren().clear();
+                borne++;
+                File file = new File("src/sample/ressourcefrnfa");
+                if (!(file.exists())) file.mkdir();
+                File texte = new File("src/sample/ressourcefrnfa/enoncefrnfa" + borne + ".txt");
+                variablefr2nfa = borne;
+                try {
+                    Scanner scanner = new Scanner(texte);
+                    String enonce = scanner.nextLine();
+                    enoncefrancaisnfa.setText(enonce);
+                    enoncefrancaisnfa.setFont(new Font(40));
+                    enoncefrancaisnfa.setWrapText(true);
+                    gridcentrefr2nfa.add(enoncefrancaisnfa, 0, 0);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+            else{
+                window.setScene(sceneresultat);
+                window.setTitle("AUTOMA4U : Resultat");
             }
         }
         if(actionevent.getSource()==reponsefr2nfa){
@@ -943,38 +1031,12 @@ public class Main extends Application implements EventHandler<ActionEvent> {
             gridcentrefr2nfa.add(frnfasolution,0,0);
         }
         if(actionevent.getSource()==toexitfrnfa){
-            window.setScene(accueil);
-            window.setTitle("AUTOMA4U : Accueil");
-        }
-
-        /**
-         * SIXIEME SCENE REGEX -> DFA
-         */
-        if(actionevent.getSource()==toexitrgxdfa){
-            window.setScene(accueil);
-            window.setTitle("AUTOMA4U : Accueil");
-        }
-
-        if(actionevent.getSource()==toexitdfa){
-            window.setScene(accueil);
-            window.setTitle("AUTOMA4U : Accueil");
-        }
-        /**
-         * SEPTIEME SCENE (** REGEX -> NFA **)
-         */
-        if(actionevent.getSource()==toexitrgxnfa){
-            window.setScene(accueil);
-            window.setTitle("AUTOMA4U : Accueil");
-        }
-        if(actionevent.getSource()==toexitfrregex){
+            borne=0;
             window.setScene(accueil);
             window.setTitle("AUTOMA4U : Accueil");
         }
 
 
-        if(actionevent.getSource()==newrgxnfa){
-
-        }
     }
 
     public Integer getChoice(ComboBox<Integer> combobox) {
@@ -1135,26 +1197,69 @@ public class Main extends Application implements EventHandler<ActionEvent> {
         System.setOut(stdout);
     }
 
-
-    public static String stripNonDigits(
-            final CharSequence input ){
-        final StringBuilder sb = new StringBuilder(
-                input.length() );
-        for(int i = 0; i < input.length(); i++){
-            final char c = input.charAt(i);
-            if(c > 47 && c < 58){
-                sb.append(c);
+    public void difficultyDFArgx(){
+        for (int i = 0; i < 21; i++) {
+            try {
+                createDfa(String.valueOf(i));
+                window.setScene(dfa2regex);
+                window.setTitle("AUTOMA4U : Automate déterministe vers expression régulière");
+                borne=0;
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
-        return sb.toString();
     }
-    public String reader(File file ) throws FileNotFoundException {
-        Scanner  scanner  = new Scanner (file);
-        String string = scanner.nextLine();
-        scanner.close();
-        return string;
+    public void difficultyNFArgx(){
+        for (int i = 0; i < 21; i++) {
+            try {
+                createNfa(String.valueOf(i));
+                window.setScene(nfa2regex);
+                window.setTitle("AUTOMA4U : Automate non déterministe vers expression régulière");
+                borne=0;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
+    public void difficultyFRdfa(){
+        for (int i = 0; i < 21; i++) {
+            try {
+                createfr2dfa(String.valueOf(i));
+                window.setScene(fr2dfa);
+                window.setTitle("AUTOMA4U : Français vers automate déterministe");
+                borne=0;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
+    public void difficultyFRnfa(){
+        for (int i = 0; i < 21; i++) {
+            try {
+                createfr2nfa(String.valueOf(i));
+                window.setScene(fr2nfa);
+                window.setTitle("AUTOMA4U : Français vers automate non déterministe");
+                borne=0;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void difficultyFRrgx(){
+        for (int i = 0; i < 21; i++) {
+            try {
+                createfr2regex(String.valueOf(i));
+                window.setScene(fr2regex);
+                window.setTitle("AUTOMA4U : Français vers expression régulière");
+                borne=0;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 
 
 }

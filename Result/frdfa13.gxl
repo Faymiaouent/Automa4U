@@ -7,21 +7,24 @@
 		<attr name="node:shape" kind="node">
 			<string>circle</string>
 		</attr>
-		<node id="initial">
-			<attr name="shape">
-				<string>plaintext</string>
-			</attr>
-		</node>
-		<edge from="initial" to="N_0" isdirected="true" id="initial--N_0">
-		</edge>
 		<node id="N_0">
 			<attr name="name">
 				<string>0</string>
 			</attr>
 		</node>
+		<edge from="N_0" to="N_0" isdirected="true" id="N_0--N_0">
+			<attr name="label">
+				<string>b</string>
+			</attr>
+		</edge>
 		<edge from="N_0" to="N_1" isdirected="true" id="N_0--N_1">
 			<attr name="label">
 				<string>a</string>
+			</attr>
+		</edge>
+		<edge from="N_0" to="N_2" isdirected="true" id="N_0--N_2">
+			<attr name="label">
+				<string>c</string>
 			</attr>
 		</edge>
 		<node id="N_1">
@@ -29,12 +32,49 @@
 				<string>1</string>
 			</attr>
 		</node>
-		<edge from="N_1" to="N_2" isdirected="true" id="N_1--N_2">
+		<edge from="N_1" to="N_0" isdirected="true" id="N_1--N_0">
+			<attr name="label">
+				<string>b</string>
+			</attr>
+		</edge>
+		<edge from="N_1" to="N_1" isdirected="true" id="N_1--N_1">
 			<attr name="label">
 				<string>a</string>
 			</attr>
 		</edge>
+		<edge from="N_1" to="N_1" isdirected="true" id="N_1--N_1:1">
+			<attr name="label">
+				<string>c</string>
+			</attr>
+		</edge>
 		<node id="N_2">
+			<attr name="name">
+				<string>3</string>
+			</attr>
+		</node>
+		<edge from="N_2" to="N_0" isdirected="true" id="N_2--N_0">
+			<attr name="label">
+				<string>b</string>
+			</attr>
+		</edge>
+		<edge from="N_2" to="N_1" isdirected="true" id="N_2--N_1">
+			<attr name="label">
+				<string>c</string>
+			</attr>
+		</edge>
+		<edge from="N_2" to="N_3" isdirected="true" id="N_2--N_3">
+			<attr name="label">
+				<string>a</string>
+			</attr>
+		</edge>
+		<node id="initial">
+			<attr name="shape">
+				<string>plaintext</string>
+			</attr>
+		</node>
+		<edge from="initial" to="N_1" isdirected="true" id="initial--N_1">
+		</edge>
+		<node id="N_3">
 			<attr name="name">
 				<string>2</string>
 			</attr>
@@ -42,5 +82,20 @@
 				<string>doublecircle</string>
 			</attr>
 		</node>
+		<edge from="N_3" to="N_0" isdirected="true" id="N_3--N_0">
+			<attr name="label">
+				<string>b</string>
+			</attr>
+		</edge>
+		<edge from="N_3" to="N_1" isdirected="true" id="N_3--N_1">
+			<attr name="label">
+				<string>a</string>
+			</attr>
+		</edge>
+		<edge from="N_3" to="N_1" isdirected="true" id="N_3--N_1:1">
+			<attr name="label">
+				<string>c</string>
+			</attr>
+		</edge>
 	</graph>
 </gxl>

@@ -3,6 +3,6 @@ digraph Automaton {
 0 [shape=doublecircle]; 
   initial [shape=plaintext,label=""];
   initial -> 0
-  0 -> 0 [label="0"];
+  0 -> 0 [label="a"];
 }
 

@@ -3,10 +3,10 @@ digraph Automaton {
 node [shape=circle];
   initial [shape=plaintext,label=""];
   initial -> 0
-  0 -> 2 [label="0"];
+  0 -> 2 [label="a"];
 1 [shape=doublecircle]; 
-  1 -> 1 [label="0"];
+  1 -> 1 [label="a"];
 node [shape=circle];
-  2 -> 1 [label="0"];
+  2 -> 1 [label="a"];
 }
 

@@ -32,9 +32,7 @@ public class ParsingDOT {
     public void ParsingDFA(String file) throws IOException {
         File dossier = new File("dotfiles");
         if(!dossier.exists()) dossier.mkdir();
-
         Runtime rt = Runtime.getRuntime();
-        //Process pr = rt.exec("c:\\Graphviz\\bin\\dot.exe -Tpng DFA.dot -o src\\sample\\ressources\\DFA.png");
         Process pr = rt.exec("c:\\Graphviz\\bin\\dot.exe -Tpng dotfiles\\DFA"+file+".dot -o src\\sample\\ressources\\dfa"+file+".png");
         Process pr4 = rt.exec("c:\\Graphviz\\bin\\gxl2gv.exe -g -o Result\\DFA"+file+".gxl dotfiles\\DFA"+file+".dot");
     }

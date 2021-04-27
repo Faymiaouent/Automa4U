@@ -14,7 +14,7 @@
 		</node>
 		<edge from="N_0" to="N_0" isdirected="true" id="N_0--N_0">
 			<attr name="label">
-				<string>a</string>
+				<string>0</string>
 			</attr>
 		</edge>
 		<node id="initial">
