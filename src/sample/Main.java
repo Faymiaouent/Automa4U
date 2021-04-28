@@ -231,7 +231,7 @@ public class Main extends Application implements EventHandler<ActionEvent> {
     Label texteresultat = new Label();
     GridPane gridresultat = new GridPane();
     BorderPane layoutresultat = new BorderPane();
-    Scene sceneresultat = new Scene(layoutresultat,1000,600);
+    Scene sceneresultat = new Scene(layoutresultat,1200,800);
 
 
 
@@ -273,7 +273,7 @@ public class Main extends Application implements EventHandler<ActionEvent> {
          */
         todfa.setPrefSize(200,100);
         tonfa.setPrefSize(200,100);
-        question.setText("==> Choisissez le type d'automate :");
+        question.setText("          ⇒ Choisissez le type d'automate :");
         question.setFont(new Font(50));
         tooltitre.getItems().addAll(question);
         grid.setAlignment(Pos.CENTER);
@@ -344,7 +344,7 @@ public class Main extends Application implements EventHandler<ActionEvent> {
         toDFAfrgx.setPrefSize(200,100);
         toNFArgx.setPrefSize(200,100);
         hboxchoix.getChildren().addAll(toDFAfrgx,toNFArgx);
-        qst.setText("==> Choisissez le type d'automate :");
+        qst.setText("           ⇒ Choisissez le type d'automate :");
         qst.setFont(new Font(50));
         toolTitreChoix.getItems().addAll(question);
         gridChoix.setAlignment(Pos.CENTER);
@@ -433,7 +433,7 @@ public class Main extends Application implements EventHandler<ActionEvent> {
         tofrdfa.setPrefSize(300,100);
         tofrnfa.setPrefSize(300,100);
         //hbox4.getChildren().addAll(tofrnfa,tofrnfa);
-        questionfr.setText("==> Choisissez le type d'automate :");
+        questionfr.setText("            ⇒ Choisissez le type d'automate :");
         questionfr.setFont(new Font(50));
         tooltitrechoixfr.getItems().addAll(questionfr);
         gridfrdfanfa.setAlignment(Pos.CENTER);
@@ -496,9 +496,10 @@ public class Main extends Application implements EventHandler<ActionEvent> {
         /**
          * Douzième scène (Résultat de l'étudiant)
          */
-        texteresultat.setText("Ecrire ici votre score");
+        texteresultat.setText("                 Ecrire ici votre score : (sur 20)");
         texteresultat.setFont(new Font(50));
-        accepter.setPrefSize(1000,100);
+        accepter.setPrefSize(1200,100);
+        toolresultat.getItems().addAll(texteresultat);
         hboxresultat.getChildren().addAll(accepter);
         resultat.setPrefSize(200,20);
         layoutresultat.setBottom(hboxresultat);
@@ -653,7 +654,7 @@ public class Main extends Application implements EventHandler<ActionEvent> {
                         compteur-=1;
                         difficultyDFArgx();
                     }
-                    else if(score>15 && compteur <10){
+                    else if(score>=15 && compteur <10){
                         compteur+=1;
                         difficultyDFArgx();
                     }
@@ -667,7 +668,7 @@ public class Main extends Application implements EventHandler<ActionEvent> {
                         compteur-=1;
                         difficultyNFArgx();
                     }
-                    else if(score>15 && compteur <10){
+                    else if(score>=15 && compteur <10){
                         compteur+=1;
                         difficultyNFArgx();
                     }
@@ -680,7 +681,7 @@ public class Main extends Application implements EventHandler<ActionEvent> {
                         compteur-=1;
                         difficultyFRdfa();
                     }
-                    else if(score>15 && compteur <10){
+                    else if(score>=15 && compteur <10){
                         compteur+=1;
                         difficultyFRdfa();
                     }
@@ -693,7 +694,7 @@ public class Main extends Application implements EventHandler<ActionEvent> {
                         compteur-=1;
                         difficultyFRnfa();
                     }
-                    else if(score>15 && compteur <10){
+                    else if(score>=15 && compteur <10){
                         compteur+=1;
                         difficultyFRnfa();
                     }
@@ -706,7 +707,7 @@ public class Main extends Application implements EventHandler<ActionEvent> {
                         compteur-=1;
                         difficultyFRrgx();
                     }
-                    else if(score>15 && compteur <10){
+                    else if(score>=15 && compteur <10){
                         compteur+=1;
                         difficultyFRrgx();
                     }

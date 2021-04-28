@@ -7,34 +7,101 @@
 		<attr name="node:shape" kind="node">
 			<string>circle</string>
 		</attr>
-		<node id="initial">
-			<attr name="shape">
-				<string>plaintext</string>
-			</attr>
-		</node>
-		<edge from="initial" to="N_0" isdirected="true" id="initial--N_0">
-		</edge>
 		<node id="N_0">
 			<attr name="name">
 				<string>0</string>
 			</attr>
 		</node>
+		<edge from="N_0" to="N_0" isdirected="true" id="N_0--N_0">
+			<attr name="label">
+				<string>0</string>
+			</attr>
+		</edge>
 		<edge from="N_0" to="N_1" isdirected="true" id="N_0--N_1">
 			<attr name="label">
-				<string>a</string>
+				<string>1</string>
+			</attr>
+		</edge>
+		<edge from="N_0" to="N_2" isdirected="true" id="N_0--N_2">
+			<attr name="label">
+				<string>2</string>
 			</attr>
 		</edge>
 		<node id="N_1">
 			<attr name="name">
-				<string>1</string>
+				<string>3</string>
+			</attr>
+			<attr name="shape">
+				<string>doublecircle</string>
 			</attr>
 		</node>
+		<edge from="N_1" to="N_0" isdirected="true" id="N_1--N_0">
+			<attr name="label">
+				<string>0</string>
+			</attr>
+		</edge>
 		<edge from="N_1" to="N_2" isdirected="true" id="N_1--N_2">
 			<attr name="label">
-				<string>a</string>
+				<string>1&#45;2</string>
 			</attr>
 		</edge>
 		<node id="N_2">
+			<attr name="name">
+				<string>6</string>
+			</attr>
+		</node>
+		<edge from="N_2" to="N_0" isdirected="true" id="N_2--N_0">
+			<attr name="label">
+				<string>0</string>
+			</attr>
+		</edge>
+		<edge from="N_2" to="N_2" isdirected="true" id="N_2--N_2">
+			<attr name="label">
+				<string>1&#45;2</string>
+			</attr>
+		</edge>
+		<node id="N_3">
+			<attr name="name">
+				<string>1</string>
+			</attr>
+			<attr name="shape">
+				<string>doublecircle</string>
+			</attr>
+		</node>
+		<edge from="N_3" to="N_0" isdirected="true" id="N_3--N_0">
+			<attr name="label">
+				<string>0</string>
+			</attr>
+		</edge>
+		<edge from="N_3" to="N_2" isdirected="true" id="N_3--N_2">
+			<attr name="label">
+				<string>2</string>
+			</attr>
+		</edge>
+		<edge from="N_3" to="N_4" isdirected="true" id="N_3--N_4">
+			<attr name="label">
+				<string>1</string>
+			</attr>
+		</edge>
+		<node id="N_4">
+			<attr name="name">
+				<string>8</string>
+			</attr>
+			<attr name="shape">
+				<string>doublecircle</string>
+			</attr>
+		</node>
+		<edge from="N_4" to="N_2" isdirected="true" id="N_4--N_2">
+			<attr name="label">
+				<string>1&#45;2</string>
+			</attr>
+		</edge>
+		<edge from="N_4" to="N_7" isdirected="true" id="N_4--N_7">
+			<attr name="label">
+				<string>0</string>
+			</attr>
+		</edge>
+		<node id="N_5">
 			<attr name="name">
 				<string>2</string>
 			</attr>
@@ -42,5 +109,105 @@
 				<string>doublecircle</string>
 			</attr>
 		</node>
+		<edge from="N_5" to="N_6" isdirected="true" id="N_5--N_6">
+			<attr name="label">
+				<string>1</string>
+			</attr>
+		</edge>
+		<node id="N_6">
+			<attr name="name">
+				<string>5</string>
+			</attr>
+		</node>
+		<edge from="N_6" to="N_8" isdirected="true" id="N_6--N_8">
+			<attr name="label">
+				<string>0</string>
+			</attr>
+		</edge>
+		<node id="N_7">
+			<attr name="name">
+				<string>4</string>
+			</attr>
+		</node>
+		<edge from="N_7" to="N_1" isdirected="true" id="N_7--N_1">
+			<attr name="label">
+				<string>1</string>
+			</attr>
+		</edge>
+		<edge from="N_7" to="N_2" isdirected="true" id="N_7--N_2">
+			<attr name="label">
+				<string>2</string>
+			</attr>
+		</edge>
+		<edge from="N_7" to="N_3" isdirected="true" id="N_7--N_3">
+			<attr name="label">
+				<string>0</string>
+			</attr>
+		</edge>
+		<edge from="N_7" to="N_5" isdirected="true" id="N_7--N_5">
+			<attr name="label">
+				<string>4</string>
+			</attr>
+		</edge>
+		<node id="N_8">
+			<attr name="name">
+				<string>9</string>
+			</attr>
+		</node>
+		<edge from="N_8" to="N_5" isdirected="true" id="N_8--N_5">
+			<attr name="label">
+				<string>0</string>
+			</attr>
+		</edge>
+		<edge from="N_8" to="N_5" isdirected="true" id="N_8--N_5:1">
+			<attr name="label">
+				<string>4</string>
+			</attr>
+		</edge>
+		<node id="N_9">
+			<attr name="name">
+				<string>7</string>
+			</attr>
+		</node>
+		<edge from="N_9" to="N_2" isdirected="true" id="N_9--N_2">
+			<attr name="label">
+				<string>1&#45;2</string>
+			</attr>
+		</edge>
+		<edge from="N_9" to="N_7" isdirected="true" id="N_9--N_7">
+			<attr name="label">
+				<string>0</string>
+			</attr>
+		</edge>
+		<node id="N_10">
+			<attr name="name">
+				<string>10</string>
+			</attr>
+			<attr name="shape">
+				<string>doublecircle</string>
+			</attr>
+		</node>
+		<edge from="N_10" to="N_0" isdirected="true" id="N_10--N_0">
+			<attr name="label">
+				<string>0</string>
+			</attr>
+		</edge>
+		<edge from="N_10" to="N_2" isdirected="true" id="N_10--N_2">
+			<attr name="label">
+				<string>2</string>
+			</attr>
+		</edge>
+		<edge from="N_10" to="N_9" isdirected="true" id="N_10--N_9">
+			<attr name="label">
+				<string>1</string>
+			</attr>
+		</edge>
+		<node id="initial">
+			<attr name="shape">
+				<string>plaintext</string>
+			</attr>
+		</node>
+		<edge from="initial" to="N_10" isdirected="true" id="initial--N_10">
+		</edge>
 	</graph>
 </gxl>

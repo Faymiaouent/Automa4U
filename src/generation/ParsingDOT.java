@@ -6,8 +6,9 @@ import java.io.IOException;
 public class ParsingDOT {
 
     /**
+     * (*!!* IMPORTANT *!!*)
      * Modifier le chemin si votre Graphviz n'est pas à l'endroit inscrit ci-dessous pour votre OS.
-     * @param OS -> "Windows" ou "Linux"
+     * OS -> "Windows" ou "Linux"
      */
     public void Parsing(String OS) throws IOException {
         File dossier = new File("Result");
