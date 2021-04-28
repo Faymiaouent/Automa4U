@@ -5,6 +5,7 @@ Le programme se lance depuis la classe Main.java dans le dossier sample. Le chem
 
 Le projet nécessite d'avoir GraphViz sur son ordinateur pour générer les images des automates, télécharger GraphViz sur :
 https://graphviz.org/download/
+
 Modifier l'emplacement de GraphViz dans les différentes méthodes de la classe à la position "src/sample/ParsingDOT.java"
 Modifier le système d'exploitation dans la classe ParsingDot.java aussi.
 
