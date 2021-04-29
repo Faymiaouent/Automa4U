@@ -24,4 +24,6 @@ javafx.controls,javafx.fxml
 --add-exports
 javafx.graphics/com.sun.javafx.sg.prism=ALL-UNNAMED
 
-Le programme peut être lancé maintenant. Les boutons + et - permettent d'augmenter / réduire la difficulté. Le bouton de choix (1,2,3,4) correspond au type de problème, légendé sur la page d'accueil de l'application.
+Le programme peut maintenant être lancé. Les boutons + et - permettent d'augmenter / réduire la difficulté. Le bouton de choix (1,2,3,4) correspond au type de problème, légendé sur la page d'accueil de l'application. Le reste est normalement indiqué dans l'application.
+
+Quelques exemples d'automates / d'expressions régulières / d'énoncés sont présents dans les dossiers respectivement "ressources", "ressourcesfrdfa"
