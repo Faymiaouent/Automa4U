@@ -724,7 +724,7 @@ public class Main extends Application implements EventHandler<ActionEvent> {
          * Problème (** DFA -> REGEX **)
          */
         if(actionevent.getSource()==newDfa){
-            if(borne<5) {
+            if(borne<20) {
                     gridImage.getChildren().remove(dfa);
                     gridImage.getChildren().remove(reponseregexdfa);
                     System.out.println(borne);
@@ -771,7 +771,7 @@ public class Main extends Application implements EventHandler<ActionEvent> {
          */
 
         if(actionevent.getSource()==newNfa){
-            if(borne<5) {
+            if(borne<20) {
                 gridImageNFA.getChildren().remove(nfa);
                 gridImageNFA.getChildren().remove(reponseregexnfa);
                 borne++;
@@ -815,7 +815,7 @@ public class Main extends Application implements EventHandler<ActionEvent> {
          * PROBLEME (** REGEX -> DFA **)
          */
         if(actionevent.getSource()==newrgxdfa){
-            if(borne<5) {
+            if(borne<20) {
                 gridImagergxdfa.getChildren().remove(regexdfa);
                 gridImagergxdfa.getChildren().remove(dfasolution);
                 borne++;
@@ -860,7 +860,7 @@ public class Main extends Application implements EventHandler<ActionEvent> {
          * PROBLEME (** REGEX -> NFA **)
          */
         if(actionevent.getSource()==newrgxnfa){
-            if(borne<5) {
+            if(borne<20) {
                 gridImageRGXnfa.getChildren().remove(regexnfa);
                 gridImageRGXnfa.getChildren().remove(nfasolution);
                 borne++;
@@ -905,7 +905,7 @@ public class Main extends Application implements EventHandler<ActionEvent> {
          * Problème (** FR -> REGEX **)
          */
         if(actionevent.getSource()==newEnonce){
-            if(borne<5) {
+            if(borne<20) {
                 gridcentrefr2regex.getChildren().clear();
                 borne++;
                 File file = new File("src/sample/ressourcefr2/enoncefrregex" + borne + ".txt");
@@ -952,7 +952,7 @@ public class Main extends Application implements EventHandler<ActionEvent> {
          */
 
         if(actionevent.getSource()==newenoncefr2dfa){
-            if(borne<5) {
+            if(borne<20) {
                 gridcentrefr2dfa.getChildren().clear();
                 borne++;
                 File texte = new File("src/sample/ressourcefrdfa/enoncefrdfa" + borne + ".txt");
@@ -996,7 +996,7 @@ public class Main extends Application implements EventHandler<ActionEvent> {
          * PROBLEME (** FR -> NFA **)
          */
         if(actionevent.getSource()==newenoncefr2nfa){
-            if(borne<5) {
+            if(borne<20) {
                 gridcentrefr2nfa.getChildren().clear();
                 borne++;
                 File file = new File("src/sample/ressourcefrnfa");

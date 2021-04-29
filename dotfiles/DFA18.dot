@@ -1,51 +1,10 @@
 digraph Automaton {
   rankdir = LR;
 node [shape=circle];
-  0 -> 9 [label="0"];
-  0 -> 0 [label="4"];
-  0 -> 1 [label="3"];
-node [shape=circle];
-  1 -> 4 [label="0"];
-2 [shape=doublecircle]; 
-  2 -> 11 [label="0"];
-  2 -> 0 [label="4"];
-  2 -> 5 [label="1"];
-  2 -> 1 [label="3"];
-node [shape=circle];
-  3 -> 8 [label="0"];
-4 [shape=doublecircle]; 
-  4 -> 9 [label="0"];
-  4 -> 0 [label="4"];
-  4 -> 1 [label="3"];
-node [shape=circle];
-  5 -> 9 [label="0"];
-  5 -> 0 [label="4"];
-  5 -> 3 [label="1"];
-  5 -> 1 [label="3"];
-node [shape=circle];
-  6 -> 3 [label="1"];
-node [shape=circle];
-  7 -> 2 [label="0"];
-  7 -> 0 [label="4"];
-  7 -> 1 [label="3"];
-8 [shape=doublecircle]; 
-  8 -> 6 [label="0-1"];
-node [shape=circle];
-  9 -> 9 [label="0"];
-  9 -> 0 [label="4"];
-  9 -> 0 [label="1"];
-  9 -> 1 [label="3"];
-10 [shape=doublecircle]; 
   initial [shape=plaintext,label=""];
-  initial -> 10
-  10 -> 11 [label="0"];
-  10 -> 0 [label="4"];
-  10 -> 6 [label="1"];
-  10 -> 1 [label="3"];
-node [shape=circle];
-  11 -> 9 [label="0"];
-  11 -> 0 [label="4"];
-  11 -> 7 [label="1"];
-  11 -> 1 [label="3"];
+  initial -> 0
+  0 -> 1 [label="a"];
+1 [shape=doublecircle]; 
+  1 -> 1 [label="a"];
 }
 
