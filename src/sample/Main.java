@@ -74,7 +74,7 @@ public class Main extends Application implements EventHandler<ActionEvent> {
     VBox vboxvide = new VBox(20);
     BorderPane layout1 = new BorderPane();
     GridPane grid = new GridPane();
-    Scene sceneSelection = new Scene(layout1,1000,600);
+    Scene sceneSelection = new Scene(layout1,1200,800);
 
     /**
      * Troisième scène (DFA -> regex)
@@ -123,7 +123,7 @@ public class Main extends Application implements EventHandler<ActionEvent> {
     Label qst = new Label();
     BorderPane layoutchoix = new BorderPane();
     GridPane gridChoix = new GridPane();
-    Scene sceneChoix = new Scene(layoutchoix,1000,600);
+    Scene sceneChoix = new Scene(layoutchoix,1200,800);
 
     TextField texteRegex = new TextField();
     Button toExitRgx = new Button("Retour");
@@ -187,7 +187,7 @@ public class Main extends Application implements EventHandler<ActionEvent> {
     Label questionfr = new Label();
     BorderPane layoutfrdfa = new BorderPane();
     GridPane gridfrdfanfa = new GridPane();
-    Scene sceneselectionfrdfa = new Scene(layoutfrdfa,1000,600);
+    Scene sceneselectionfrdfa = new Scene(layoutfrdfa,1200,800);
 
     /**
      *

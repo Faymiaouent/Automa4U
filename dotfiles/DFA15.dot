@@ -6,6 +6,6 @@ node [shape=circle];
   0 -> 2 [label="a"];
 1 [shape=doublecircle]; 
 node [shape=circle];
-  2 -> 1 [label="a"];
+  2 -> 1 [label="b"];
 }
 
