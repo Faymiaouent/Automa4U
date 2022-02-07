@@ -1,7 +1,10 @@
-AABID Mohsine, BERAHIA Fayssal, FARYSSY Mohammed, REGA Eve
+### AABID Mohsine, BERAHIA Fayssal, FARYSSY Mohammed, REGA Eve
 
-AUTOMA4U
+# AUTOMA4U
 Le programme se lance depuis la classe Main.java dans le dossier sample. Le chemin exact est "src/sample/Main.java"
+
+
+## Installation
 
 Le projet nécessite d'avoir GraphViz sur son ordinateur pour générer les images des automates, télécharger GraphViz sur :
 https://graphviz.org/download/
@@ -17,12 +20,14 @@ Il faut ensuite :
 
 -Ajouter JavaFX aux VM Options de l'IDE (Sur IntelliJ : Onglet Run -> Edit configurations -> Ecrire dans VM options :
 
+```shell
 --module-path
 C:/openjfx-11.0.2_windows-x64_bin-sdk/javafx-sdk-11.0.2/lib (** Modifier le chemin **)
 --add-modules
 javafx.controls,javafx.fxml
 --add-exports
 javafx.graphics/com.sun.javafx.sg.prism=ALL-UNNAMED
+```
 
 Le programme peut maintenant être lancé. Les boutons + et - permettent d'augmenter / réduire la difficulté. Le bouton de choix (1,2,3,4) correspond au type de problème, légendé sur la page d'accueil de l'application. Le reste est normalement indiqué dans l'application.
 
